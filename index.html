@@ -8,13 +8,48 @@
     <title id="page-title">الثانوية الإعدادية يوسف بن تاشفين - ليساسفة 3</title>
     <style>
         :root {
-            --primary-red: #dc2626;
-            --dark-red: #881321;
-            --sidebar-bg: rgba(136, 19, 33, 0.96);
-            --bg-dark: #180507;
-            --card-bg: rgba(127, 29, 29, 0.7);
+            --primary-blue: #66a8fb;
+            --dark-blue: #1e3a8a;
+            --sidebar-bg: rgba(30, 58, 138, 0.96);
+            --bg-dark: #0b1329;
+            --card-bg: rgba(30, 58, 138, 0.45);
             --text-light: #ffffff;
-            --accent-pink: #fca5a5;
+            --accent-blue: #bfdbfe;
+        }
+
+        /* 1. التدرج اللوني العلوي المتناسق مع الأزرق والأبيض */
+        #grad {
+            background-image: linear-gradient(to top, #1e3a8a, #66a8fb, #172554);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -3;
+            pointer-events: none;
+        }
+
+        /* 2. طبقة الصورة الخلفية مع التلاشي السلس نحو الأسفل */
+        .bg-overlay-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('https://imglink.cc/cdn/PZ4xC5q8C0.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.25;
+            z-index: -2;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 90%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 90%);
+        }
+
+        /* تفعيل التمرير السلس للصفحة بأكملها */
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -24,10 +59,10 @@
             color: var(--text-light);
             min-height: 100vh;
             overflow-x: hidden;
-            scroll-behavior: smooth;
             display: flex;
         }
 
+        /* 3. شبكة القماش التفاعلية تحت الصورة والتدرج */
         canvas {
             position: fixed;
             top: 0;
@@ -37,6 +72,7 @@
             z-index: -1;
             display: block;
             pointer-events: none;
+            opacity: 0.4;
         }
 
         /* Dynamic Sidebar Styling for RTL & LTR */
@@ -85,7 +121,7 @@
 
         .sidebar-header h3 {
             font-size: 1.1rem;
-            color: var(--accent-pink);
+            color: var(--accent-blue);
             margin: 0;
         }
 
@@ -95,6 +131,7 @@
             gap: 10px;
         }
 
+        /* تحسين تأثيرات الهوفر (Hover) لروابط القائمة الجانبية */
         .sidebar-nav a {
             color: #ffffff;
             padding: 12px 16px;
@@ -102,17 +139,25 @@
             font-size: 15px;
             font-weight: bold;
             border-radius: 8px;
-            transition: background 0.2s;
+            transition: all 0.3s ease;
         }
 
         .sidebar-nav a:hover {
-            background-color: #63101a;
+            background-color: var(--primary-blue);
+            color: #0b1329;
+            transform: translateX(-5px);
+        }
+
+        html[dir="ltr"] .sidebar-nav a:hover {
+            transform: translateX(5px);
         }
 
         .sidebar-nav a.active {
-            background-color: var(--primary-red);
+            background-color: var(--primary-blue);
+            color: #0b1329;
         }
 
+        /* تحسين هوفر زر الفيسبوك الجانبي */
         .fb-sidebar-btn {
             background: #1877f2;
             color: #ffffff !important;
@@ -121,15 +166,19 @@
             justify-content: center;
             gap: 8px;
             margin-top: 5px;
+            transition: all 0.3s ease !important;
         }
 
         .fb-sidebar-btn:hover {
-            background: #166fe5 !important;
+            background: #145dbf !important;
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(24, 119, 242, 0.4);
         }
 
+        /* تحسين هوفر زر تغيير اللغات */
         .lang-btn {
             background: #ffffff;
-            color: #991b1b;
+            color: var(--dark-blue);
             border: none;
             padding: 10px 18px;
             border-radius: 20px;
@@ -137,11 +186,14 @@
             font-weight: bold;
             font-size: 14px;
             width: 100%;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
         }
 
         .lang-btn:hover {
-            background: #fee2e2;
+            background: var(--primary-blue);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 168, 251, 0.4);
         }
 
         /* Main Wrapper Margin Shift */
@@ -171,15 +223,16 @@
 
         .hero h1 {
             font-size: 2.8rem;
-            color: var(--accent-pink);
+            color: #ffffff;
             margin-bottom: 10px;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.85);
         }
 
         .hero h2 {
             font-size: 1.4rem;
-            color: #fecaca;
+            color: var(--accent-blue);
             margin-bottom: 15px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
         }
 
         .hero p {
@@ -188,6 +241,7 @@
             max-width: 850px;
             margin: 15px auto;
             line-height: 1.8;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
         }
 
         .content {
@@ -198,10 +252,11 @@
             margin: 0 auto;
         }
 
-        /* Perfectly Aligned 32-Card Grid System */
+        /* نظام الشبكة المحسن لمنع الفراغات المتروكة (Dense Grid Flow) */
         .card-grid-32 {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-auto-flow: dense;
             gap: 22px;
             margin-bottom: 30px;
             align-items: stretch;
@@ -209,46 +264,36 @@
 
         .school-card {
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.28);
             border-radius: 16px;
             padding: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
+        /* تأثير هوفر متطور للبطاقات */
         .school-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 14px 35px rgba(220, 38, 38, 0.3);
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 16px 40px rgba(102, 168, 251, 0.35);
+            border-color: rgba(102, 168, 251, 0.6);
         }
 
         .school-card.featured-card {
             grid-column: 1 / -1;
-            background: rgba(153, 27, 27, 0.85);
-            border: 2px solid var(--accent-pink);
+            background: rgba(30, 58, 138, 0.85);
+            border: 2px solid var(--primary-blue);
         }
 
         .school-card h3 {
             margin-top: 0;
-            color: var(--accent-pink);
+            color: var(--accent-blue);
             border-bottom: 2px solid rgba(255, 255, 255, 0.25);
             padding-bottom: 10px;
             font-size: 1.35rem;
-        }
-
-        .badge {
-            display: inline-block;
-            background: var(--primary-red);
-            color: white;
-            padding: 5px 14px;
-            border-radius: 20px;
-            font-size: 13px;
-            margin-bottom: 15px;
-            font-weight: bold;
-            align-self: flex-start;
         }
 
         p, li {
@@ -269,40 +314,48 @@
         }
 
         a.fb-link, a.phone-link {
-            color: var(--accent-pink);
+            color: var(--accent-blue);
             text-decoration: underline;
             font-weight: bold;
         }
 
+        /* تحسين تأثيرات الهوفر للأزرار داخل البطاقات */
         .btn-action {
             display: inline-block;
-            background: var(--primary-red);
-            color: #ffffff;
+            background: var(--primary-blue);
+            color: #0b1329;
             padding: 10px 20px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
             margin-top: 12px;
             text-align: center;
-            transition: background 0.2s;
+            transition: all 0.3s ease;
         }
 
         .btn-action:hover {
-            background: #b91c1c;
+            background: #ffffff;
+            color: #1e3a8a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(102, 168, 251, 0.5);
         }
 
         .btn-fb {
             background: #1877f2;
+            color: #ffffff !important;
         }
 
         .btn-fb:hover {
-            background: #166fe5;
+            background: #145dbf !important;
+            color: #ffffff !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(24, 119, 242, 0.4);
         }
 
         .dress-code-container {
             text-align: center;
             margin: 20px 0;
-            background: rgba(15, 23, 42, 0.85);
+            background: rgba(11, 19, 41, 0.85);
             border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 12px;
             padding: 20px;
@@ -314,11 +367,16 @@
             object-fit: contain;
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .dress-code-container img:hover {
+            transform: scale(1.02);
         }
 
         .prohibited-box {
-            background: rgba(153, 27, 27, 0.4);
-            border-right: 5px solid #ef4444;
+            background: rgba(30, 58, 138, 0.35);
+            border-right: 5px solid var(--primary-blue);
             padding: 15px 20px;
             border-radius: 8px;
             margin-top: 20px;
@@ -326,13 +384,13 @@
 
         html[dir="ltr"] .prohibited-box {
             border-right: none;
-            border-left: 5px solid #ef4444;
+            border-left: 5px solid var(--primary-blue);
         }
 
         footer {
             text-align: center;
             padding: 30px;
-            background: rgba(15, 23, 42, 0.98);
+            background: rgba(11, 19, 41, 0.98);
             position: relative;
             z-index: 1;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -340,19 +398,26 @@
             margin-top: 40px;
         }
 
+        /* تحسين هوفر زر القائمة في الهواتف المحمولة */
         .mobile-toggle {
             display: none;
             position: fixed;
             top: 15px;
             z-index: 1100;
-            background: var(--primary-red);
-            color: white;
+            background: var(--primary-blue);
+            color: #0b1329;
             border: none;
             padding: 10px 16px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-toggle:hover {
+            background: #ffffff;
+            transform: scale(1.05);
         }
 
         html[dir="rtl"] .mobile-toggle { right: 15px; }
@@ -377,6 +442,13 @@
 </head>
 <body>
 
+    <!-- 1. التدرج الخلفي اللوني -->
+    <div id="grad"></div>
+
+    <!-- 2. صورة الخلفية مع التلاشي السلس نحو الأسفل -->
+    <div class="bg-overlay-image"></div>
+
+    <!-- 3. شبكة القماش التفاعلية تحت الصورة والتدرج -->
     <canvas id="canvas"></canvas>
 
     <button class="mobile-toggle" onclick="toggleSidebar()">☰ Menu</button>
@@ -418,41 +490,42 @@
                 
                 <!-- Box 1 -->
                 <div class="school-card" id="about">
-                    <span class="badge" data-ar="البطاقة 1" data-fr="Fiche 1" data-en="Card 1">البطاقة 1</span>
                     <h3 data-ar="الهوية الإدارية للمؤسسة" data-fr="Identité administrative" data-en="Administrative Identity">الهوية الإدارية للمؤسسة</h3>
                     <p data-ar="تعتبر الثانوية الإعدادية يوسف بن تاشفين بليساسفة 3 من المؤسسات التعليمية العمومية التي تقدم خدمات التعليم الثانوي الإعدادي بالدار البيضاء." data-fr="Le collège Youssef Ben Tachfine à Lysasfa 3 est un établissement d'enseignement secondaire public à Casablanca." data-en="Youssef Ben Tachfine Middle School in Lysasfa 3 is a public secondary institution in Casablanca.">تعتبر الثانوية الإعدادية يوسف بن تاشفين بليساسفة 3 من المؤسسات التعليمية العمومية التي تقدم خدمات التعليم الثانوي الإعدادي بالدار البيضاء.</p>
                 </div>
 
                 <!-- Box 2 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 2" data-fr="Fiche 2" data-en="Card 2">البطاقة 2</span>
                     <h3 data-ar="التبعية الترابية" data-fr="Rattachement territorial" data-en="Territorial Jurisdiction">التبعية الترابية</h3>
                     <p data-ar="تقع المؤسسة ترابياً تحت نفوذ عمالة مقاطعة الحي الحسني بمدينة الدار البيضاء." data-fr="L'établissement est situé sous la juridiction de la préfecture d'arrondissement de Hay Hassani à Casablanca." data-en="The school is located under the jurisdiction of Hay Hassani Prefecture in Casablanca.">تقع المؤسسة ترابياً تحت نفوذ عمالة مقاطعة الحي الحسني بمدينة الدار البيضاء.</p>
                 </div>
 
                 <!-- Box 3 -->
                 <div class="school-card" id="facebook">
-                    <span class="badge" data-ar="البطاقة 3 - الفيسبوك" data-fr="Fiche 3 - Facebook" data-en="Card 3 - Facebook">البطاقة 3 - الفيسبوك</span>
                     <h3 data-ar="الصفحة الرسمية على الفيسبوك" data-fr="Page Facebook Officielle" data-en="Official Facebook Page">الصفحة الرسمية على الفيسبوك</h3>
                     <p data-ar="انضموا إلى مجتمعنا الرقمي الذي يضم أكثر من 7,500 متابع لمتابعة جميع المستجدات والأنشطة التربوية." data-fr="Rejoignez notre communauté de plus de 7 500 abonnés pour suivre toutes les actualités et activités." data-en="Join our digital community of over 7,500 followers for the latest announcements and events.">انضموا إلى مجتمعنا الرقمي الذي يضم أكثر من 7,500 متابع لمتابعة جميع المستجدات والأنشطة التربوية.</p>
                     <a href="https://web.facebook.com/profile.php?id=100057142222294" target="_blank" class="btn-action btn-fb" data-ar="زيارة صفحة الفيسبوك" data-fr="Visiter la page Facebook" data-en="Visit Facebook Page">زيارة صفحة الفيسبوك</a>
                 </div>
 
-            
+                <!-- Box 4 -->
+                <div class="school-card" id="phone-support">
+                    <h3 data-ar="مركز التواصل والاستفسارات الهاتفي" data-fr="Centre d'Assistance Téléphonique" data-en="Phone Support & Inquiries">مركز التواصل والاستفسارات الهاتفي</h3>
+                    <p data-ar="تتيح إدارة المؤسسة خطوط تواصل هاتفية لمساعدة أمهات وآباء وأولياء الأمور والاستفسار عن المساطر الإدارية." data-fr="L'administration met à disposition une assistance téléphonique pour aider les parents et répondre aux démarches." data-en="School administration provides dedicated phone support for parents regarding academic administrative procedures.">تتيح إدارة المؤسسة خطوط تواصل هاتفية لمساعدة أمهات وآباء وأولياء الأمور والاستفسار عن المساطر الإدارية.</p>
+                    <p data-ar="ساعات العمل: الاثنين - الجمعة (08:00 - 16:30)" data-fr="Horaires : Lundi - Vendredi (08h00 - 16h30)" data-en="Hours: Monday - Friday (08:00 AM - 04:30 PM)">ساعات العمل: الاثنين - الجمعة (08:00 - 16:30)</p>
+                </div>
 
-                <!-- Box 5: FEATURED DRESS CODE WITH d.jpeg -->
+                <!-- Box 5: FEATURED DRESS CODE -->
                 <div class="school-card featured-card" id="rules">
-                    <span class="badge" data-ar="البطاقة 4 - قانون المؤسسة" data-fr="Fiche 4 - Règlement" data-en="Card 4 - Rules">البطاقة 5 - قانون المؤسسة</span>
                     <h3 data-ar="الهندام المدرسي الموحد والمحظورات الداخلية" data-fr="Code vestimentaire et objets interdits" data-en="Dress Code & Prohibited Items">الهندام المدرسي الموحد والمحظورات الداخلية</h3>
                     <p data-ar="تحرص إدارة المؤسسة على تطبيق قواعد الانضباط والالتزام الصارم بالهندام الموحد والمظهر اللائق لجميع المتعلمين والمتعلمات داخل الفضاء المدرسي." data-fr="La direction veille au respect de la tenue unifiée et à une présentation convenable pour tous les élèves." data-en="School administration enforces strict compliance with the official uniform and appropriate appearance.">تحرص إدارة المؤسسة على تطبيق قواعد الانضباط والالتزام الصارم بالهندام الموحد والمظهر اللائق لجميع المتعلمين والمتعلمات داخل الفضاء المدرسي.</p>
                     
                     <div class="dress-code-container">
                         <img src="https://imglink.cc/cdn/-XXFkVo9RF.jpeg" alt="Dress Code Guidelines / الهندام المدرسي" onerror="this.onerror=null; this.src='d.png';">
-                        <p style="font-size: 0.95rem; color: var(--accent-pink); margin-top: 10px;" data-ar="دليل الهندام المدرسي الرسمي المعتمد بالمؤسسة (d.jpeg)" data-fr="Guide officiel de la tenue scolaire adoptée (d.jpeg)" data-en="Official School Dress Code Guide (d.jpeg)">دليل الهندام المدرسي الرسمي المعتمد بالمؤسسة (d.jpeg)</p>
+                        <p style="font-size: 0.95rem; color: var(--accent-blue); margin-top: 10px;" data-ar="دليل الهندام المدرسي الرسمي المعتمد بالمؤسسة" data-fr="Guide officiel de la tenue scolaire adoptée" data-en="Official School Dress Code Guide">دليل الهندام المدرسي الرسمي المعتمد بالمؤسسة</p>
                     </div>
 
                     <div class="prohibited-box">
-                        <h4 style="margin-top:0; color:#fca5a5;" data-ar="قائمة المحظورات والأشياء الممنوعة داخل المؤسسة:" data-fr="Liste des objets et comportements interdits :" data-en="Prohibited Items & Behaviors List:">قائمة المحظورات والأشياء الممنوعة داخل المؤسسة:</h4>
+                        <h4 style="margin-top:0; color:var(--accent-blue);" data-ar="قائمة المحظورات والأشياء الممنوعة داخل المؤسسة:" data-fr="Liste des objets et comportements interdits :" data-en="Prohibited Items & Behaviors List:">قائمة المحظورات والأشياء الممنوعة داخل المؤسسة:</h4>
                         <ul>
                             <li data-ar="يمنع منعاً باتاً تشغيل واستخدام الهواتف المحمولة أو السماعات داخل الحجرات الدراسية والأروقة." data-fr="Utilisation des téléphones portables et écouteurs strictement interdite dans les classes." data-en="Using mobile phones or headphones inside classrooms and hallways is strictly prohibited.">يمنع منعاً باتاً تشغيل واستخدام الهواتف المحمولة أو السماعات داخل الحجرات الدراسية والأروقة.</li>
                             <li data-ar="حظر إحضار الأدوات الحادة، المفرقعات، أو أي أجهزة إلكترونية غير مرخص لها." data-fr="Interdiction d'apporter des objets tranchants, des pétards ou des appareils non autorisés." data-en="Bringing sharp tools, fireworks, or unauthorized electronic devices is completely banned.">حظر إحضار الأدوات الحادة، المفرقعات، أو أي أجهزة إلكترونية غير مرخص لها.</li>
@@ -461,191 +534,159 @@
                         </ul>
                     </div>
                 </div>
-                <!-- Box 4 -->
-                <div class="school-card" id="phone-support">
-                    <span class="badge" data-ar="البطاقة 5 - الدعم الهاتفي" data-fr="Fiche 5 - Support" data-en="Card 5 - Phone Support">البطاقة 4 - الدعم الهاتفي</span>
-                    <h3 data-ar="مركز التواصل والاستفسارات الهاتفي" data-fr="Centre d'Assistance Téléphonique" data-en="Phone Support & Inquiries">مركز التواصل والاستفسارات الهاتفي</h3>
-                    <p data-ar="تتيح إدارة المؤسسة خطوط تواصل هاتفية لمساعدة أمهات وآباء وأولياء الأمور والاستفسار عن المساطر الإدارية." data-fr="L'administration met à disposition une assistance téléphonique pour aider les parents et répondre aux démarches." data-en="School administration provides dedicated phone support for parents regarding academic administrative procedures.">تتيح إدارة المؤسسة خطوط تواصل هاتفية لمساعدة أمهات وآباء وأولياء الأمور والاستفسار عن المساطر الإدارية.</p>
-                    <p data-ar="ساعات العمل: الاثنين - الجمعة (08:00 - 16:30)" data-fr="Horaires : Lundi - Vendredi (08h00 - 16h30)" data-en="Hours: Monday - Friday (08:00 AM - 04:30 PM)">ساعات العمل: الاثنين - الجمعة (08:00 - 16:30)</p>
-                 </div>
+
                 <!-- Box 6 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 6" data-fr="Fiche 6" data-en="Card 6">البطاقة 6</span>
                     <h3 data-ar="الوصاية الأكاديمية" data-fr="Supervision académique" data-en="Academic Supervision">الوصاية الأكاديمية</h3>
                     <p data-ar="تخضع المؤسسة للإشراف المباشر للأكاديمية الجهوية للتربية والتكوين لجهة الدار البيضاء - سطات." data-fr="L'établissement dépend directement de l'AREF de la région Casablanca-Settat." data-en="The school directly operates under the AREF of Casablanca-Settat region.">تخضع المؤسسة للإشراف المباشر للأكاديمية الجهوية للتربية والتكوين لجهة الدار البيضاء - سطات.</p>
                 </div>
 
                 <!-- Box 7 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 7" data-fr="Fiche 7" data-en="Card 7">البطاقة 7</span>
                     <h3 data-ar="المديرية الإقليمية" data-fr="Direction provinciale" data-en="Provincial Directorate">المديرية الإقليمية</h3>
                     <p data-ar="تدار الشؤون الإدارية بالتنسيق مع المديرية الإقليمية لوزارة التربية الوطنية بالحي الحسني." data-fr="Gestion coordonnée avec la Direction Provinciale du Ministère à Hay Hassani." data-en="Administrative management in coordination with Hay Hassani Directorate.">تدار الشؤون الإدارية بالتنسيق مع المديرية الإقليمية لوزارة التربية الوطنية بالحي الحسني.</p>
                 </div>
 
                 <!-- Box 8 -->
                 <div class="school-card" id="schedule">
-                    <span class="badge" data-ar="البطاقة 8" data-fr="Fiche 8" data-en="Card 8">البطاقة 8</span>
                     <h3 data-ar="انطلاق الدراسة الفعلية" data-fr="Lancement des cours" data-en="Classes Start Date">انطلاق الدراسة الفعلية</h3>
                     <p data-ar="انطلقت الدراسة رسمياً يوم الاثنين 7 شتنبر مع تسجيل وتتبع الحضور بشكل يومي." data-fr="Les cours ont débuté le lundi 7 septembre avec appel quotidien des absences." data-en="Classes officially began on Monday, September 7 with daily attendance tracking.">انطلقت الدراسة رسمياً يوم الاثنين 7 شتنبر مع تسجيل وتتبع الحضور بشكل يومي.</p>
                 </div>
 
                 <!-- Box 9 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 9" data-fr="Fiche 9" data-en="Card 9">البطاقة 9</span>
                     <h3 data-ar="مواكبة الغياب اليومي" data-fr="Suivi des absences" data-en="Absence Monitoring">مواكبة الغياب اليومي</h3>
                     <p data-ar="تفعيل صرامة التتبع اليومي للغياب للتأكد من انتظام المتعلمين وانضباطهم الدراسي." data-fr="Contrôle quotidien et rigoureux de l'assiduité des élèves." data-en="Daily and strict monitoring of student attendance and discipline.">تفعيل صرامة التتبع اليومي للغياب للتأكد من انتظام المتعلمين وانضباطهم الدراسي.</p>
                 </div>
 
                 <!-- Box 10 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 10" data-fr="Fiche 10" data-en="Card 10">البطاقة 10</span>
                     <h3 data-ar="توقيت الصباح الرسمي" data-fr="Horaire du matin" data-en="Morning Schedule">توقيت الصباح الرسمي</h3>
                     <p data-ar="تبدأ الحصص الصباحية ابتداءً من الساعة 08:00 صباحاً بانتظام تام." data-fr="Les cours du matin débutent régulièrement à 08h00." data-en="Morning sessions start promptly at 08:00 AM.">تبدأ الحصص الصباحية ابتداءً من الساعة 08:00 صباحاً بانتظام تام.</p>
                 </div>
 
                 <!-- Box 11 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 11" data-fr="Fiche 11" data-en="Card 11">البطاقة 11</span>
                     <h3 data-ar="توقيت المساء الرسمي" data-fr="Horaire de l'après-midi" data-en="Afternoon Schedule">توقيت المساء الرسمي</h3>
                     <p data-ar="تستأنف الحصص المسائية ابتداءً من الساعة 14:00 زوالاً وفق جداول الأوقات." data-fr="Les cours de l'après-midi reprennent à 14h00 selon l'emploi du temps." data-en="Afternoon sessions resume at 02:00 PM according to class schedules.">تستأنف الحصص المسائية ابتداءً من الساعة 14:00 زوالاً وفق جداول الأوقات.</p>
                 </div>
 
                 <!-- Box 12 -->
                 <div class="school-card" id="activities">
-                    <span class="badge" data-ar="البطاقة 12" data-fr="Fiche 12" data-en="Card 12">البطاقة 12</span>
                     <h3 data-ar="احتفالية اليوم العالمي للمدرس" data-fr="Journée des enseignants" data-en="World Teachers' Day">احتفالية اليوم العالمي للمدرس</h3>
                     <p data-ar="احتفال متميز أقيم بالمؤسسة في شهر أكتوبر اعترافاً بجهود الأطر التربوية." data-fr="Célébration remarquable organisée en octobre en l'honneur des enseignants." data-en="Special celebration held in October recognizing educators' dedication.">احتفال متميز أقيم بالمؤسسة في شهر أكتوبر اعترافاً بجهود الأطر التربوية.</p>
                 </div>
 
                 <!-- Box 13 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 13" data-fr="Fiche 13" data-en="Card 13">البطاقة 13</span>
                     <h3 data-ar="إسهام الأستاذة لطيفة البيكي" data-fr="Encadrement Prof. Latifa El Biki" data-en="Prof. Latifa El Biki Guidance">إسهام الأستاذة لطيفة البيكي</h3>
                     <p data-ar="تأطير متميز لتلامذتها في تقديم لوحات تعبيرية ورسومات تقديرية للأساتذة." data-fr="Encadrement exceptionnel d'activités artistiques en hommage aux professeurs." data-en="Outstanding guidance of student artistic tributes dedicated to teachers.">تأطير متميز لتلامذتها في تقديم لوحات تعبيرية ورسومات تقديرية للأساتذة.</p>
                 </div>
 
                 <!-- Box 14 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 14" data-fr="Fiche 14" data-en="Card 14">البطاقة 14</span>
                     <h3 data-ar="إسهام الأستاذة وصال ناصح" data-fr="Encadrement Prof. Wissal Naseh" data-en="Prof. Wissal Naseh Guidance">إسهام الأستاذة وصال ناصح</h3>
                     <p data-ar="مشاركة إبداعية لتلامذتها في التعبير عن حبهم وتقديرهم للأسرة التعليمية." data-fr="Participation créative des élèves exprimant leur estime aux enseignants." data-en="Creative student participation demonstrating gratitude toward teachers.">مشاركة إبداعية لتلامذتها في التعبير عن حبهم وتقديرهم للأسرة التعليمية.</p>
                 </div>
 
                 <!-- Box 15 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 15" data-fr="Fiche 15" data-en="Card 15">البطاقة 15</span>
                     <h3 data-ar="تهنئة المديرية الإقليمية" data-fr="Félicitations de la Direction" data-en="Directorate Congratulations">تهنئة المديرية الإقليمية</h3>
                     <p data-ar="تلقي رسائل الشكر والاعتزاز الصادرة عن المديرية الإقليمية بالحي الحسني." data-fr="Réception des messages de félicitations de la Direction Provinciale." data-en="Receipt of congratulatory messages from the Provincial Directorate.">تلقي رسائل الشكر والاعتزاز الصادرة عن المديرية الإقليمية بالحي الحسني.</p>
                 </div>
 
                 <!-- Box 16 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 16" data-fr="Fiche 16" data-en="Card 16">البطاقة 16</span>
                     <h3 data-ar="ترسيخ قيم العرفان" data-fr="Valeurs de reconnaissance" data-en="Values of Gratitude">ترسيخ قيم العرفان</h3>
                     <p data-ar="غرس روح الوفاء والاحترام للرسالة النبيلة التي يحملها أطر التربية والتكوين." data-fr="Inculquer les valeurs de respect envers le corps enseignant." data-en="Instilling values of respect and appreciation toward teaching staff.">غرس روح الوفاء والاحترام للرسالة النبيلة التي يحملها أطر التربية والتكوين.</p>
                 </div>
 
                 <!-- Box 17 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 17" data-fr="Fiche 17" data-en="Card 17">البطاقة 17</span>
                     <h3 data-ar="محاربة الهدر المدرسي" data-fr="Lutte contre le décrochage" data-en="Dropout Prevention">محاربة الهدر المدرسي</h3>
                     <p data-ar="تنفيذ برامج توعوية ومواكبة اجتماعية لمنع انقطاع المتعلمين عن الدراسة." data-fr="Mise en œuvre de programmes de sensibilisation contre le décrochage." data-en="Implementation of awareness programs to prevent school dropouts.">تنفيذ برامج توعوية ومواكبة اجتماعية لمنع انقطاع المتعلمين عن الدراسة.</p>
                 </div>
 
                 <!-- Box 18 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 18" data-fr="Fiche 18" data-en="Card 18">البطاقة 18</span>
                     <h3 data-ar="المواطنة الرقمية" data-fr="Citoyenneté numérique" data-en="Digital Citizenship">المواطنة الرقمية</h3>
                     <p data-ar="توجيه التلامذة نحو الاستخدام السليم والآمن للتكنولوجيا والوسائط الحديثة." data-fr="Sensibilisation à l'utilisation sûre des technologies et réseaux." data-en="Guiding students toward safe and responsible technology usage.">توجيه التلامذة نحو الاستخدام السليم والآمن للتكنولوجيا والوسائط الحديثة.</p>
                 </div>
 
                 <!-- Box 19 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 19" data-fr="Fiche 19" data-en="Card 19">البطاقة 19</span>
                     <h3 data-ar="جمعية أمهات وآباء التلاميذ" data-fr="Association des parents" data-en="Parents Association">جمعية أمهات وآباء التلاميذ</h3>
                     <p data-ar="تعزيز الشراكة والتواصل المستمر مع أسر المتعلمين لدعم مسارهم التربوي." data-fr="Renforcement du partenariat continu avec les familles d'élèves." data-en="Strengthening ongoing partnerships with student families.">تعزيز الشراكة والتواصل المستمر مع أسر المتعلمين لدعم مسارهم التربوي.</p>
                 </div>
 
                 <!-- Box 20 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 20" data-fr="Fiche 20" data-en="Card 20">البطاقة 20</span>
                     <h3 data-ar="المبادرات الملكية والدعم" data-fr="Initiatives d'aide sociale" data-en="Social Support Initiatives">المبادرات الملكية والدعم</h3>
                     <p data-ar="توزيع المحافظ والكتب المدرسية في إطار الدعم الاجتماعي لتكافؤ الفرص." data-fr="Distribution de fournitures dans le cadre du soutien social." data-en="Distribution of school supplies to promote educational equity.">توزيع المحافظ والكتب المدرسية في إطار الدعم الاجتماعي لتكافؤ الفرص.</p>
                 </div>
 
                 <!-- Box 21 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 21" data-fr="Fiche 21" data-en="Card 21">البطاقة 21</span>
                     <h3 data-ar="النظافة والبيئة المدرسية" data-fr="Propreté et environnement" data-en="Cleanliness & Environment">النظافة والبيئة المدرسية</h3>
                     <p data-ar="تنظيم حملات دورية للعناية بنظافة الفضاءات والساحة المدرسية بليساسفة 3." data-fr="Campagnes régulières pour entretenir la propreté de l'établissement." data-en="Regular cleanup campaigns to maintain the school environment.">تنظيم حملات دورية للعناية بنظافة الفضاءات والساحة المدرسية بليساسفة 3.</p>
                 </div>
 
                 <!-- Box 22 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 22" data-fr="Fiche 22" data-en="Card 22">البطاقة 22</span>
                     <h3 data-ar="خلايا الاستماع والإنصات" data-fr="Cellules d'écoute" data-en="Listening Units">خلايا الاستماع والإنصات</h3>
                     <p data-ar="توفير الدعم النفسي والاجتماعي للتلاميذ المتعثرين لضمان توازنهم التربوي." data-fr="Soutien psychologique et social pour assurer l'équilibre des élèves." data-en="Providing social and psychological support to ensure student well-being.">توفير الدعم النفسي والاجتماعي للتلاميذ المتعثرين لضمان توازنهم التربوي.</p>
                 </div>
 
                 <!-- Box 23 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 23" data-fr="Fiche 23" data-en="Card 23">البطاقة 23</span>
                     <h3 data-ar="التوجيه التربوي والمهني" data-fr="Orientation scolaire" data-en="Career Guidance">التوجيه التربوي والمهني</h3>
                     <p data-ar="مساعدة المتعلمين في تحديد الاختيارات الدراسية والمشاريع الشخصية المستقبلية." data-fr="Aide aux élèves dans le choix de leurs projets d'avenir." data-en="Assisting students in building future academic and personal projects.">مساعدة المتعلمين في تحديد الاختيارات الدراسية والمشاريع الشخصية المستقبلية.</p>
                 </div>
 
                 <!-- Box 24 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 24" data-fr="Fiche 24" data-en="Card 24">البطاقة 24</span>
                     <h3 data-ar="الأنشطة الرياضية المدرسية" data-fr="Activités sportives" data-en="School Sports">الأنشطة الرياضية المدرسية</h3>
                     <p data-ar="تفعيل الدوريات والمنافسات الرياضية لتشجيع السلوك البدني السليم والمنافسة الشريفة." data-fr="Organisation de compétitions sportives pour stimuler l'esprit d'équipe." data-en="Organizing sports competitions to encourage teamwork and health.">تفعيل الدوريات والمنافسات الرياضية لتشجيع السلوك البدني السليم والمنافسة الشريفة.</p>
                 </div>
 
                 <!-- Box 25 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 25" data-fr="Fiche 25" data-en="Card 25">البطاقة 25</span>
                     <h3 data-ar="تخليد الأعياد الوطنية" data-fr="Fêtes nationales" data-en="National Celebrations">تخليد الأعياد الوطنية</h3>
                     <p data-ar="تنظيم عروض ثقافية ومسابقات بمناسبة الذكريات والأعياد الوطنية المجيدة." data-fr="Organisation d'activités culturelles lors des fêtes nationales." data-en="Cultural events hosted during glorious national commemorations.">تنظيم عروض ثقافية ومسابقات بمناسبة الذكريات والأعياد الوطنية المجيدة.</p>
                 </div>
 
                 <!-- Box 26 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 26" data-fr="Fiche 26" data-en="Card 26">البطاقة 26</span>
                     <h3 data-ar="حصص الدعم والتقوية" data-fr="Cours de soutien" data-en="Remedial Classes">حصص الدعم والتقوية</h3>
                     <p data-ar="تقديم حصص التثبيت والدعم التربوي للمتعلمين لضمان النجاح والتميز الدراسي." data-fr="Mise en place de cours de soutien pour renforcer les compétences." data-en="Providing extra learning support to ensure student academic excellence.">تقديم حصص التثبيت والدعم التربوي للمتعلمين لضمان النجاح والتميز الدراسي.</p>
                 </div>
 
                 <!-- Box 27 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 27" data-fr="Fiche 27" data-en="Card 27">البطاقة 27</span>
                     <h3 data-ar="جودة حجرات الدراسة" data-fr="Qualité des salles" data-en="Classroom Standards">جودة حجرات الدراسة</h3>
                     <p data-ar="توفير بيئة تعليمية مجهزة ومريحة بالسبورات ووسائل الإيضاح التربوية الحديثة." data-fr="Salles de classe bien équipées assurant le confort des apprentissages." data-en="Well-equipped classrooms providing comfortable learning environments.">توفير بيئة تعليمية مجهزة ومريحة بالسبورات ووسائل الإيضاح التربوية الحديثة.</p>
                 </div>
 
                 <!-- Box 28 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 28" data-fr="Fiche 28" data-en="Card 28">البطاقة 28</span>
                     <h3 data-ar="المعرض الفني والثقافي" data-fr="Expositions artistiques" data-en="Cultural Exhibitions">المعرض الفني والثقافي</h3>
                     <p data-ar="عرض رسومات وإبداعات التلاميذ بالممرات الرئيسية للمؤسسة لإبراز مواهبهم." data-fr="Exposition des œuvres des élèves dans les couloirs du collège." data-en="Displaying student artwork and talents in main school hallways.">عرض رسومات وإبداعات التلاميذ بالممرات الرئيسية للمؤسسة لإبراز مواهبهم.</p>
                 </div>
 
                 <!-- Box 29 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 29" data-fr="Fiche 29" data-en="Card 29">البطاقة 29</span>
                     <h3 data-ar="المكتبة والخزانة المدرسية" data-fr="Bibliothèque scolaire" data-en="School Library">المكتبة والخزانة المدرسية</h3>
                     <p data-ar="توفير فضاء المطالعة والبحث لدعم الرصيد المعرفي لدى التلامذة." data-fr="Espace de lecture et de recherche pour enrichir la culture des élèves." data-en="Reading and research space to enrich student knowledge.">توفير فضاء المطالعة والبحث لدعم الرصيد المعرفي لدى التلامذة.</p>
                 </div>
 
                 <!-- Box 30 -->
                 <div class="school-card" id="contact">
-                    <span class="badge" data-ar="البطاقة 30" data-fr="Fiche 30" data-en="Card 30">البطاقة 30</span>
                     <h3 data-ar="مواعيد الاستقبال الإداري" data-fr="Accueil administratif" data-en="Administrative Hours">مواعيد الاستقبال الإداري</h3>
                     <p data-ar="تستقبل الإدارة التربوية أولياء الأمور طيلة أيام العمل الأسبوعية من 08:00 إلى 16:30." data-fr="Accueil des parents du lundi au vendredi de 08h00 à 16h30." data-en="Welcoming parents Monday through Friday from 08:00 AM to 04:30 PM.">تستقبل الإدارة التربوية أولياء الأمور طيلة أيام العمل الأسبوعية من 08:00 إلى 16:30.</p>
                 </div>
 
                 <!-- Box 31 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 31" data-fr="Fiche 31" data-en="Card 31">البطاقة 31</span>
                     <h3 data-ar="سلاسة الشواهد والوثائق" data-fr="Documents administratifs" data-en="School Certificates">سلاسة الشواهد والوثائق</h3>
                     <p data-ar="تسليم المغادرات والشواهد المدرسية فور طلبها بمرونة وتتبع إداري محكم." data-fr="Délivrance rapide des certificats et documents administratifs." data-en="Prompt issuance of school certificates and administrative documents.">تسليم المغادرات والشواهد المدرسية فور طلبها بمرونة وتتبع إداري محكم.</p>
                     <a href="https://web.facebook.com/profile.php?id=100057142222294" target="_blank" class="btn-action btn-fb" data-ar="متابعة الإعلانات الإدارية" data-fr="Suivre les annonces sur Facebook" data-en="Follow Facebook Announcements">متابعة الإعلانات الإدارية</a>
@@ -653,7 +694,6 @@
 
                 <!-- Box 32 -->
                 <div class="school-card">
-                    <span class="badge" data-ar="البطاقة 32" data-fr="Fiche 32" data-en="Card 32">البطاقة 32</span>
                     <h3 data-ar="رؤية التميز بليساسفة 3" data-fr="Excellence à Lysasfa 3" data-en="Excellence Vision">رؤية التميز بليساسفة 3</h3>
                     <p data-ar="السعي المستمر للرقي بمستوى التحصيل الدراسي وترسيخ قيم المواطنة الإيجابية." data-fr="Engagement continu pour l'excellence et les valeurs citoyennes." data-en="Continuous commitment to educational excellence and civic values.">السعي المستمر للرقي بمستوى التحصيل الدراسي وترسيخ قيم المواطنة الإيجابية.</p>
                 </div>
@@ -716,6 +756,14 @@
             mouse.x = e.clientX;
             mouse.y = e.clientY;
         });
+
+        // Touch support for mobile phones
+        window.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                mouse.x = e.touches[0].clientX;
+                mouse.y = e.touches[0].clientY;
+            }
+        }, { passive: true });
 
         const spacing = 45;
         let cols = Math.floor(canvas.width / spacing);
@@ -793,7 +841,7 @@
                 }
             }
 
-            ctx.strokeStyle = 'rgba(252, 165, 165, 0.28)';
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
             ctx.lineWidth = 1;
             ctx.beginPath();
             for (let c of constraints) {
