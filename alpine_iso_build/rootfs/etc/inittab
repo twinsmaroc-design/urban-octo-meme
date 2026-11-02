@@ -1,0 +1,1 @@
+tty1::respawn:/bin/sh /usr/local/bin/autostart_gui.sh

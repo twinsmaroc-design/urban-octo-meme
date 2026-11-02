@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo suspend > /sys/power/disk
+echo disk > /sys/power/state

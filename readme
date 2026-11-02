@@ -1,0 +1,24 @@
+# Custom Alpine Linux Rampline & LXDE ISO
+
+A lightweight, customized Alpine Linux live ISO configured to run entirely in RAM (`rampline`) with a VNC/noVNC remote access stack for containerized environments (like GitHub Codespaces).
+
+## 🚀 Features
+* **RAM-Based Execution**: Boots cleanly using an initramfs root filesystem structure.
+* **Graphical Remote Access**: Bridges QEMU VNC display (`:1` / port `5901`) to a web browser via `websockify` on port `6080`.
+* **Custom Initialization**: Configured with custom device nodes, virtual filesystems, and minimal auth setup.
+
+---
+
+## 🔑 Default Login Credentials
+* **Username**: `root`
+* **Password**: `root`
+
+---
+
+## 🛠️ Build & Run Instructions
+
+### 1. Pack the Initramfs Rootfs
+```bash
+cd rootfs
+find . -print0 | cpio --null -ov --format=newc | gzip -9 > ../iso_root/boot/initramfs.gz
+cd ..

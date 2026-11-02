@@ -1,0 +1,82 @@
+
+Running `apk add --no-cache --root /rootfs --initdb xorg-server xf86-video-modesetting xf86-input-libinput openbox pcmanfm lxsession` at 2026-11-01 23:28:42
+apk-tools 3.0.8-r0, compiled for x86_64.
+WARNING: The indexes contain broken packages which might not function properly.
+(1/5) Installing libevdev (1.13.1-r0)
+(2/5) Installing mtdev (1.1.6-r3)
+(3/5) Installing libinput-libs (1.25.0-r0)
+(4/5) Installing libinput-udev (1.25.0-r0)
+(5/5) Installing xf86-input-libinput (1.4.0-r1)
+Executing eudev-3.2.14-r2.trigger
+OK: 106.1 MiB in 163 packages
+
+Running `apk add --no-cache --root /rootfs --initdb xorg-server xf86-video-modesetting xf86-input-libinput openbox pcmanfm lxsession` at 2026-11-01 23:29:12
+apk-tools 3.0.8-r0, compiled for x86_64.
+WARNING: The indexes contain broken packages which might not function properly.
+OK: 106.1 MiB in 163 packages
+
+Running `apk add --no-cache --root /rootfs --initdb xorg-server xf86-video-modesetting xf86-input-libinput openbox pcmanfm lxsession` at 2026-11-02 12:23:33
+apk-tools 3.0.8-r0, compiled for x86_64.
+WARNING: The indexes contain broken packages which might not function properly.
+OK: 106.1 MiB in 163 packages
+
+Running `apk add --no-cache --root /rootfs --initdb xorg-server xf86-video-modesetting xf86-input-libinput openbox pcmanfm lxsession` at 2026-11-02 12:25:18
+apk-tools 3.0.8-r0, compiled for x86_64.
+WARNING: The indexes contain broken packages which might not function properly.
+OK: 106.1 MiB in 163 packages
+
+Running `apk add --no-cache --root /rootfs --initdb xorg-server xf86-video-fbdev xf86-input-libinput openbox pcmanfm lxsession` at 2026-11-02 12:32:25
+apk-tools 3.0.8-r0, compiled for x86_64.
+WARNING: The indexes contain broken packages which might not function properly.
+(1/1) Installing xf86-video-fbdev (0.5.0-r6)
+OK: 106.1 MiB in 164 packages
+
+Running `apk add --no-cache --root /rootfs --initdb xorg-server xf86-video-modesetting xf86-input-libinput openbox pcmanfm lxsession` at 2026-11-02 12:34:53
+apk-tools 3.0.8-r0, compiled for x86_64.
+WARNING: The indexes contain broken packages which might not function properly.
+OK: 106.1 MiB in 164 packages
+
+Running `apk add --no-cache --root /rootfs --initdb xorg-server xf86-video-modesetting xf86-input-libinput openbox pcmanfm lxsession` at 2026-11-02 12:36:22
+apk-tools 3.0.8-r0, compiled for x86_64.
+WARNING: The indexes contain broken packages which might not function properly.
+OK: 106.1 MiB in 164 packages
+
+Running `apk add --no-cache --root /rootfs --initdb xorg-server xf86-video-modesetting xf86-input-libinput openbox pcmanfm lxsession` at 2026-11-02 12:39:17
+apk-tools 3.0.8-r0, compiled for x86_64.
+WARNING: The indexes contain broken packages which might not function properly.
+OK: 106.1 MiB in 164 packages
+
+Running `apk add --no-cache --root /rootfs --initdb xorg-server xf86-video-fbdev xf86-input-libinput openbox pcmanfm lxsession` at 2026-11-02 12:39:26
+apk-tools 3.0.8-r0, compiled for x86_64.
+WARNING: The indexes contain broken packages which might not function properly.
+OK: 106.1 MiB in 164 packages
+
+Running `apk add --no-cache --root /rootfs --initdb xorg-server xf86-video-fbdev xf86-input-libinput openbox pcmanfm lxsession` at 2026-11-02 12:39:54
+apk-tools 3.0.8-r0, compiled for x86_64.
+WARNING: The indexes contain broken packages which might not function properly.
+OK: 106.1 MiB in 164 packages
+
+Running `apk add --no-cache --root /rootfs --initdb xorg-server xf86-video-fbdev xf86-input-libinput openbox pcmanfm lxsession` at 2026-11-02 12:41:13
+apk-tools 3.0.8-r0, compiled for x86_64.
+WARNING: The indexes contain broken packages which might not function properly.
+OK: 106.1 MiB in 164 packages
+
+Running `apk add --no-cache --root /rootfs --initdb xorg-server xf86-video-fbdev xf86-input-libinput openbox pcmanfm lxsession` at 2026-11-02 12:43:18
+apk-tools 3.0.8-r0, compiled for x86_64.
+WARNING: The indexes contain broken packages which might not function properly.
+OK: 106.1 MiB in 164 packages
+
+Running `apk add --no-cache --root /rootfs --initdb xorg-server xf86-video-fbdev xf86-input-libinput openbox pcmanfm lxsession` at 2026-11-02 12:49:44
+apk-tools 3.0.8-r0, compiled for x86_64.
+WARNING: The indexes contain broken packages which might not function properly.
+OK: 106.1 MiB in 164 packages
+
+Running `apk add --no-cache --root /rootfs --initdb xorg-server xf86-video-fbdev xf86-input-libinput openbox pcmanfm lxsession` at 2026-11-02 12:51:08
+apk-tools 3.0.8-r0, compiled for x86_64.
+WARNING: The indexes contain broken packages which might not function properly.
+OK: 106.1 MiB in 164 packages
+
+Running `apk add --no-cache --root /rootfs --initdb xorg-server xf86-video-fbdev xf86-input-libinput openbox pcmanfm lxsession` at 2026-11-02 12:52:33
+apk-tools 3.0.8-r0, compiled for x86_64.
+WARNING: The indexes contain broken packages which might not function properly.
+OK: 106.1 MiB in 164 packages
